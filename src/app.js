@@ -28,7 +28,6 @@ function formatDay(timestamp) {
   return days[day];
 }
 function displayTemperature(responce) {
-  console.log(responce);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -44,11 +43,16 @@ function displayTemperature(responce) {
   dateElement.innerHTML = `Last updated:
    ${formatDate(responce.data.time * 1000)}`;
   iconElement.setAttribute("src", responce.data.condition.icon_url);
-  iconElement.setAttribute("alt", responce.data.condition.description);
+    iconElement.setAttribute("alt", responce.data.condition.description);
+    
+    console.log(responce.data);
 }
 
 let apiKey = "cf5ea9841oaacf10033cdea44t6f44bb";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=London&key=${apiKey}&units=metric`;
+let city = "London";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+
 
 console.log(apiUrl);
 axios.get(apiUrl).then(displayTemperature);
