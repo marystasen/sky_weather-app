@@ -1,3 +1,4 @@
+
 h1 {
   font-size: 34px;
   font-weight: 400;
@@ -17,7 +18,7 @@ li {
   font-size: 16px;
   font-weight: 300;
 }
-li::first-letter {
+li:first-letter {
   text-transform: capitalize;
 }
 
@@ -53,4 +54,22 @@ li::first-letter {
 .weather-temperature .unit {
   position: relative;
   font-size: 20px;
+}
+
+.weather-forecast {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.forecast-date {
+    font-size: 16px;
+
+}
+
+.forecast-temperature {
+    font-size: 14px;
+}
+
+.temp-max {
+    font-weight: bold;
 }
