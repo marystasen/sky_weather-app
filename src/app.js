@@ -28,6 +28,35 @@ function formatDay(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#daily-forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+            <div class="forecast-date">
+            ${day}
+            </div>
+            <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" alt="" width="50" />
+            <div class="forecast-temperature">
+              <span class="temp-max">
+            28º 
+            </span>
+            <span class="temp-min">
+             11º
+             </span>
+            </div>
+          </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(responce) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -61,6 +90,7 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 search("London");
+displayForecast();
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
