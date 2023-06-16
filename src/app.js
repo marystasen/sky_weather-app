@@ -28,30 +28,32 @@ function formatDay(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
+
 function displayForecast(responce) {
-    console.log(responce.data.daily);
+  let forecast = responce.data.daily;
   let forecastElement = document.querySelector("#daily-forecast");
 
   let forecastHTML = `<div class="row">`;
-
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
+    forecast.forEach(function (forecastDay, index) {
+        if (index < 6) {
+            forecastHTML =
+                forecastHTML +
+                `<div class="col-2">
             <div class="forecast-date">
-            ${day}
+            ${formatDay(forecastDay.time)}
             </div>
-            <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" alt="" width="50" />
+            <img src="${forecastDay.condition.icon_url}" alt="" width="50" />
             <div class="forecast-temperature">
               <span class="temp-max">
-            28º 
+            ${Math.round(forecastDay.temperature.maximum)}º
             </span>
             <span class="temp-min">
-             11º
+             ${Math.round(forecastDay.temperature.minimum)}º
              </span>
             </div>
           </div>`;
+            console.log(responce.data);
+        }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -61,8 +63,7 @@ function displayForecast(responce) {
 function getForecast(coordinates) {
   let apiKey = "cf5ea9841oaacf10033cdea44t6f44bb";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=metric`;
-    console.log(apiUrl);
-    axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(responce) {
@@ -83,7 +84,7 @@ function displayTemperature(responce) {
    ${formatDate(responce.data.time * 1000)}`;
   iconElement.setAttribute("src", responce.data.condition.icon_url);
   iconElement.setAttribute("alt", responce.data.condition.description);
-    console.log(responce.data);
+  console.log(responce.data);
   getForecast(responce.data.coordinates);
 }
 
@@ -98,6 +99,7 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
+
 search("London");
 
 let form = document.querySelector("#search-form");
