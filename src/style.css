@@ -1,9 +1,14 @@
+body {
+  background-image: url("https://img.freepik.com/free-vector/summer-sunset-aesthetic-background-watercolor-vector_53876-157806.jpg?w=1800&t=st=1686933932~exp=1686934532~hmac=492c2305bf82d907935004f4684f2a516ac8e6ca965f9b7e36b1e7d241e60b64");
+  background-size: cover;
+}
 
 h1 {
   font-size: 34px;
   font-weight: 400;
   line-height: 28px;
   margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
 ul {
@@ -18,13 +23,22 @@ li {
   font-size: 16px;
   font-weight: 300;
 }
+
 li:first-letter {
   text-transform: capitalize;
+}
+
+footer {
+  text-align: center;
+  font-size: small;
 }
 
 .weather-fraim-wrap {
   max-width: 600px;
   margin: 40px auto;
+  border-radius: 5px;
+  background-color: rgba(247, 246, 244, 0.3);
+    color: #050505;
 }
 
 .weather-app {
@@ -38,7 +52,7 @@ li:first-letter {
 }
 
 .weather-temperature img {
-    margin-top: -8px;
+  margin-top: -8px;
   margin-right: 5px;
   height: 64px;
   width: 64px;
@@ -57,19 +71,18 @@ li:first-letter {
 }
 
 .weather-forecast {
-    margin-top: 20px;
-    text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .forecast-date {
-    font-size: 16px;
-
+  font-size: 16px;
 }
 
 .forecast-temperature {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .temp-max {
-    font-weight: bold;
+  font-weight: bold;
 }
